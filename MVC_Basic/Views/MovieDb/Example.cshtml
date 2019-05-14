@@ -1,0 +1,16 @@
+﻿@model List<MVC_Basic.Models.MovieDbTask>
+
+@{
+    //CSharp Code
+    ViewBag.Title = "Example";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@*Html Code is Here...*@
+<h2>Example</h2>
+
+
+@foreach (var v in Model)
+{
+    <b>Movie Name : </b>@v.Name
+    <br />
+}

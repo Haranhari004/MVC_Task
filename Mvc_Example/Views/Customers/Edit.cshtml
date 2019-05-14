@@ -1,0 +1,46 @@
+﻿@model Mvc_Example.View_Model.CustomerMembershipViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c=>c.Customer.id)
+    <div class="form-group">
+        @Html.LabelFor(c =>c.Customer.name)
+        @Html.TextBoxFor(c=> c.Customer.name,new {@class="form-control" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c=>c.Customer.DateOfBirth)
+        @Html.TextBoxFor(c=>c.Customer.DateOfBirth,"{0:d}",new { @class="form-control"})
+        @*@Html.EditorFor(c=>c.Customer.DateOfBirth,new {htmlAttritudes =new {@class="form-control" } })*@
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.Customer.MembershipTypeid)
+        @Html.DropDownListFor(c => c.Customer.MembershipTypeid, new SelectList(Model.MembershipTypes, "id", "MembershipTypeName"), "--Select--", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" name="cmdSubmit" value="Save Changes" />
+    </div>
+}
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/jqueryui");
+    @Styles.Render("~/Scripts/jquerycss");
+    
+    <script>
+        $(document).ready(function () {
+            $("#Customer_DateOfBirth").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                dateFormat:"dd-mm-yy"
+            })
+        })
+    </script>
+   }

@@ -1,0 +1,47 @@
+﻿@model Mvc_Example.View_Model.MovieGenreViewModel
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.Moviename)
+        @Html.TextBoxFor(c => c.movie.Moviename,new {@class="form-control" })
+        @Html.ValidationMessageFor(c=>c.movie.Moviename,"",new {@class="text-danger"})
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.ReleaseDate)
+        @Html.EditorFor(c => c.movie.ReleaseDate, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(c => c.movie.ReleaseDate, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.DateAdded)
+        @Html.EditorFor(c => c.movie.DateAdded, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(c => c.movie.DateAdded, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.Stock)
+        @Html.EditorFor(c => c.movie.Stock, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(c => c.movie.Stock,"", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.Genreid)
+        @*@Html.DropDownListFor(c => c.movie.Genre.name, new SelectList(Model.Genres, "id", "name"), "--Select--", new { @class = "form-control" })*@
+        @Html.DropDownListFor(c => c.movie.Genreid, new SelectList(Model.Genres, "id", "name"), "--Select--", new { @class = "form-control" })
+        @Html.ValidationMessageFor(c => c.movie.Genreid, "", new { @class = "text-danger" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" name="cmdMovieSubmit" value="Add New Movie" class="btn btn-primary" />
+    </div>
+
+}
+

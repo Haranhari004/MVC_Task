@@ -1,0 +1,60 @@
+﻿@model Mvc_Example.View_Model.MovieGenreViewModel
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(c => c.movie.id)
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.Moviename)
+        @Html.TextBoxFor(c => c.movie.Moviename, new { @class = "form-control" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.ReleaseDate)
+        @Html.TextBoxFor(c => c.movie.ReleaseDate, "{0:d}", new { @class = "form-control date" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.DateAdded)
+        @Html.TextBoxFor(c => c.movie.DateAdded, "{0:d}", new { @class = "form-control date" })
+
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.Stock)
+        @Html.EditorFor(c => c.movie.Stock, new { htmlAttributes = new { @class = "form-control" } })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(c => c.movie.Genreid)
+        @Html.DropDownListFor(c => c.movie.Genreid, new SelectList(Model.Genres, "id", "name"), "--Select--", new { @class = "form-control" })
+    </div>
+
+    <div class="form-group">
+        <input type="submit" name="cmdMovieSubmit" value="Add New " class="btn btn-primary" />
+    </div>
+
+}
+
+
+@section Scripts{
+    @Scripts.Render("~/Scripts/jqueryui");
+    @Styles.Render("~/Scripts/jquerycss");
+
+    <script>
+        $(document).ready(function () {
+            $(".date").datepicker({
+                changeYear: true,
+                changeMonth: true,
+                dateFormat:"dd-mm-yy"
+            })
+        })
+    </script>
+}

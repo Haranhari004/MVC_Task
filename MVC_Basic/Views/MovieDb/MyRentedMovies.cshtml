@@ -1,0 +1,17 @@
+﻿@model MVC_Basic.ViewModel.CustomerViewModel
+@{
+    ViewBag.Title = "MyRentedMovies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+    <h2>@Model.Customer.name</h2>
+    <ul>
+
+
+        @foreach (var mov in Model.Mymovies)
+        {
+            <li>@mov.Name</li>
+        }
+    </ul>
+
+

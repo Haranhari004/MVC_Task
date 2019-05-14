@@ -1,0 +1,29 @@
+﻿@model Mvc_Example.Models.Movie
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Movie Details</h1>
+
+<ul>
+    <li>
+        Movie Id: @Model.id
+    </li>
+    <li>
+        Movie Name: @Model.Moviename
+    </li>
+    <li>
+        Movie ReleaseDate: @Model.ReleaseDate.ToShortDateString()
+    </li>
+    <li>
+        Movie AddedDate: @Model.DateAdded.ToShortDateString()
+    </li>
+    <li>
+        Movie Stock: @Model.Stock
+    </li>
+    <li>
+        Genre: @Model.Genre.name
+    </li>
+</ul>
+

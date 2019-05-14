@@ -1,0 +1,40 @@
+﻿@model List<Mvc_Example.Models.Customer>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+@Html.ActionLink("Add New Customer Details","Create","Customers")
+<table class="table table-bordered table-hover">
+    <tr>
+        @*<th>Customer Id</th>*@
+        <th>Name</th>
+        <th>MembershipType</th>
+        <th>Action</th>
+        @*<th>Date Of Birth</th>*@
+    </tr>
+
+    <tbody>
+        @foreach (var data in Model)
+        {
+            <tr>
+                <td>
+                    
+                    @Html.ActionLink(@data.name, "Details", "Customers", new { id = data.id }, null)
+                </td>
+                <td>
+                    @data.MembershipType.MembershipTypeName
+                </td>
+                <td>
+                    @Html.ActionLink("Edit","Edit","Customers", new { id = data.id }, null)
+                </td>
+            </tr>
+        }
+    </tbody>
+        
+  
+</table> 
+

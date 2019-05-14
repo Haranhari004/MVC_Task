@@ -1,0 +1,42 @@
+﻿@model List<Mvc_Example.Models.Movie>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Movie Details</h2>
+@Html.ActionLink("Add new Data","Create","Movies")
+<br />
+<table class="table table-bordered table-hover">
+
+    <tr>
+        <th>
+            Movie Name
+        </th>
+        <th>
+            Genre
+        </th>
+        <th>
+            Action
+        </th>
+    </tr>
+
+        @foreach(var mov in Model)
+        {
+        <tr>
+            <td>
+                @Html.ActionLink(mov.Moviename,"Details","Movies",new {id=mov.id },null)
+            </td>
+
+            <td>
+                @mov.Genre.name
+            </td>
+            <td>
+                @Html.ActionLink("Edit","Edit","Movies", new { id = mov.id }, null)
+            </td>
+        </tr>
+
+            
+        }
+    
+</table>
